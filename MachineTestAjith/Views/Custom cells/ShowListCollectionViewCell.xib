@@ -42,18 +42,25 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zLi-9M-rh3">
+                                <rect key="frame" x="62" y="11" width="46" height="30"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="nmS-fd-F3z" firstAttribute="centerY" secondItem="Plq-Xs-qPN" secondAttribute="centerY" id="25d-gh-PVf"/>
                             <constraint firstAttribute="trailing" secondItem="3te-JW-8RH" secondAttribute="trailing" id="3qg-uO-LRg"/>
+                            <constraint firstItem="zLi-9M-rh3" firstAttribute="centerX" secondItem="Plq-Xs-qPN" secondAttribute="centerX" id="4Pq-5S-88z"/>
                             <constraint firstItem="Nde-EZ-OKj" firstAttribute="leading" secondItem="MJ3-LK-RrB" secondAttribute="leading" constant="8" id="91h-t3-pB7"/>
                             <constraint firstItem="Nde-EZ-OKj" firstAttribute="centerX" secondItem="MJ3-LK-RrB" secondAttribute="centerX" id="9Cf-k0-Rx0"/>
                             <constraint firstItem="3te-JW-8RH" firstAttribute="leading" secondItem="MJ3-LK-RrB" secondAttribute="leading" id="A12-Je-NJO"/>
                             <constraint firstItem="nmS-fd-F3z" firstAttribute="centerX" secondItem="Plq-Xs-qPN" secondAttribute="centerX" id="Lcy-lo-A8f"/>
+                            <constraint firstItem="zLi-9M-rh3" firstAttribute="height" secondItem="Plq-Xs-qPN" secondAttribute="height" multiplier="0.75" id="QjW-ee-ZEl"/>
+                            <constraint firstItem="zLi-9M-rh3" firstAttribute="width" secondItem="Plq-Xs-qPN" secondAttribute="width" multiplier="1.15" id="WfS-c9-JgQ"/>
                             <constraint firstItem="3te-JW-8RH" firstAttribute="top" secondItem="MJ3-LK-RrB" secondAttribute="top" id="Yiq-NP-n19"/>
                             <constraint firstItem="Plq-Xs-qPN" firstAttribute="top" secondItem="MJ3-LK-RrB" secondAttribute="top" constant="6" id="bCk-aN-ZDd"/>
                             <constraint firstAttribute="trailing" secondItem="Plq-Xs-qPN" secondAttribute="trailing" constant="8" id="cxe-ky-ftP"/>
+                            <constraint firstItem="zLi-9M-rh3" firstAttribute="centerY" secondItem="Plq-Xs-qPN" secondAttribute="centerY" id="daN-Dc-ZOW"/>
                             <constraint firstAttribute="bottom" secondItem="Nde-EZ-OKj" secondAttribute="bottom" constant="6" id="oPw-JK-7or"/>
                             <constraint firstItem="Nde-EZ-OKj" firstAttribute="top" secondItem="3te-JW-8RH" secondAttribute="bottom" constant="6" id="xd0-gA-yQh"/>
                         </constraints>
@@ -71,6 +78,7 @@
             </constraints>
             <size key="customSize" width="113" height="155"/>
             <connections>
+                <outlet property="btnStarRating" destination="zLi-9M-rh3" id="ozH-DC-G9V"/>
                 <outlet property="lblRating" destination="nmS-fd-F3z" id="0Ff-Wi-v9b"/>
                 <outlet property="lblShowName" destination="Nde-EZ-OKj" id="zDr-6s-flO"/>
                 <outlet property="showThumbNail" destination="3te-JW-8RH" id="XkY-2z-CeJ"/>

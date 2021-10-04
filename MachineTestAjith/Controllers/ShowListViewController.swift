@@ -10,7 +10,7 @@ import UIKit
 class ShowListViewController: UIViewController {
     @IBOutlet weak var showSearchBar: UISearchBar!
     @IBOutlet weak var showListCollectionView: UICollectionView!
-    
+
     var showsList: [Show] = []
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,8 +44,8 @@ class ShowListViewController: UIViewController {
             guard let vc = segue.destination as? ShowDetailViewController else { return }
             vc.show = showsList[sender as! Int]
             vc.didUpdteRating = { value in
-                print(value)
                 self.showSimpleAlert(withTitle: "", withMessage: "Your rating is \(value)")
+                self.showListCollectionView.reloadData()
             }
         }
     }
@@ -61,6 +61,8 @@ func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection s
 func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ShowListCollectionViewCell", for: indexPath) as! ShowListCollectionViewCell
     cell.setupCell(showDetail: showsList[indexPath.row])
+    cell.btnStarRating.addTarget(self, action: #selector(clickedStarRatingButton(sender:)), for: .touchUpInside)
+    cell.btnStarRating.tag = indexPath.item
     return cell
 }
 
@@ -73,8 +75,19 @@ func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath:
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "GoToShowDetailVc", sender: indexPath.row)
+          performSegue(withIdentifier: "GoToShowDetailVc", sender: indexPath.row)
     }
     
+    @objc func clickedStarRatingButton(sender: UIButton){
+        let ratingVC = UIStoryboard(name: "ShowList", bundle: nil).instantiateViewController(withIdentifier: "RatingViewController") as! RatingViewController
+        ratingVC.show = showsList[sender.tag]
+        ratingVC.didUpdteRating = { value in
+            self.showListCollectionView.reloadData()
+        }
+        self.addChild(ratingVC)
+        ratingVC.view.frame = self.view.frame
+        self.view.addSubview(ratingVC.view)
+        ratingVC.didMove(toParent: self)
+    }
 
 }

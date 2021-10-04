@@ -7,6 +7,7 @@
 
 import UIKit
 import Cosmos
+import CoreData
 class ShowDetailViewController: UIViewController {
     var didUpdteRating : ((Double) -> Void)?
     @IBOutlet weak var ivThumbnail: UIImageView!
@@ -26,11 +27,13 @@ class ShowDetailViewController: UIViewController {
     @IBOutlet weak var viewRating: CosmosView!
     var show: Show!
     var ratingValue = 1.0
-    
+    var people: [NSManagedObject] = []
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
         getShowDetails()
+        retrieveStarRatingFromDB()
     }
     func setupUI(){
         self.navigationItem.title = show.name
@@ -42,9 +45,7 @@ class ShowDetailViewController: UIViewController {
         stackUrl.isHidden = true
         stackRating.isHidden = true
         
-        // Change the cosmos view rating
         viewRating.rating = 1
-
         viewRating.didFinishTouchingCosmos = { [self] rating in
           ratingValue = rating
         }
@@ -82,6 +83,10 @@ class ShowDetailViewController: UIViewController {
         }
     }
     
+    func retrieveStarRatingFromDB() {
+        self.viewRating.rating = DbOperations().getShowRatingById(id: show.id) ?? 1.0
+    }
+    
     func getShowDetails(){
         ApiHandler.apiCall(requrl: ServerURL.showList + "/" +  String(describing: show.id), method: .get, parameter: [:], enableSpinner: true) { responseData, success, errorMesage in
             if success{
@@ -103,6 +108,38 @@ class ShowDetailViewController: UIViewController {
     // MARK: - Actions
     
     @IBAction func clickedSubmitRatingButton(_ sender: Any) {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+        let managedContext = appDelegate.persistentContainer.viewContext
+        
+        let fetchRequest:NSFetchRequest<NSFetchRequestResult> = NSFetchRequest.init(entityName: "ShowEntity")
+        fetchRequest.predicate = NSPredicate(format: "id = %@", String(show.id))
+        do
+        {
+            let retrievedRatingarray = try managedContext.fetch(fetchRequest)
+            if !retrievedRatingarray.isEmpty{
+                // update db
+                let objectUpdate = retrievedRatingarray[0] as! NSManagedObject
+                objectUpdate.setValue(ratingValue, forKey: "rating")
+                do{
+                    try managedContext.save()
+                }
+                catch
+                {
+                    print(error)
+                }
+            }else{
+                DbOperations().createRatingEntry(id: show.id, rating: ratingValue)
+            }
+        }
+        catch
+        {
+            print(error)
+        }
+        
+        
+        
+        //final, we need to add some data to our newly created record for each keys using
+        //here adding 5 data with loop
         navigationController?.popViewController(animated: true)
         didUpdteRating!(ratingValue)
     }

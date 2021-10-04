@@ -12,6 +12,7 @@ class ShowListCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var showThumbNail: UIImageView!
     @IBOutlet weak var lblShowName: UILabel!
     @IBOutlet weak var lblRating: UILabel!
+    @IBOutlet weak var btnStarRating: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -25,6 +26,9 @@ class ShowListCollectionViewCell: UICollectionViewCell {
         lblShowName.text = showDetail.name
         if let rating = showDetail.rating.average{
             lblRating.text = "\(rating)"
+        }
+        if let ratingFromDb = DbOperations().getShowRatingById(id: showDetail.id){
+            lblRating.text = "\(ratingFromDb)"
         }
        
     }

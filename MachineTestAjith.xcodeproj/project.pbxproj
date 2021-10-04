@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		DF245D87C2D5EBB9AB28E093 /* Pods_MachineTestAjith.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40BAA0DA786C5E90C836FBE7 /* Pods_MachineTestAjith.framework */; };
+		F881F2E5270B4B030096155E /* TestApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F881F2E3270B4B030096155E /* TestApp.xcdatamodeld */; };
+		F881F2E7270B63C80096155E /* DbOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = F881F2E6270B63C80096155E /* DbOperations.swift */; };
+		F881F2EF270B73F60096155E /* RatingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F881F2ED270B73190096155E /* RatingViewController.swift */; };
 		F88C941D27060E5100E1DD62 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88C941C27060E5100E1DD62 /* AppDelegate.swift */; };
 		F88C942127060E5100E1DD62 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88C942027060E5100E1DD62 /* ViewController.swift */; };
 		F88C942427060E5100E1DD62 /* ShowList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F88C942227060E5100E1DD62 /* ShowList.storyboard */; };
@@ -29,6 +32,9 @@
 		40BAA0DA786C5E90C836FBE7 /* Pods_MachineTestAjith.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MachineTestAjith.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3741AB347679808C2768A6C /* Pods-MachineTestAjith.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MachineTestAjith.release.xcconfig"; path = "Target Support Files/Pods-MachineTestAjith/Pods-MachineTestAjith.release.xcconfig"; sourceTree = "<group>"; };
 		F7F072FA2DA29F36ACB5C88A /* Pods-MachineTestAjith.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MachineTestAjith.debug.xcconfig"; path = "Target Support Files/Pods-MachineTestAjith/Pods-MachineTestAjith.debug.xcconfig"; sourceTree = "<group>"; };
+		F881F2E4270B4B030096155E /* TestApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TestApp.xcdatamodel; sourceTree = "<group>"; };
+		F881F2E6270B63C80096155E /* DbOperations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbOperations.swift; sourceTree = "<group>"; };
+		F881F2ED270B73190096155E /* RatingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingViewController.swift; sourceTree = "<group>"; };
 		F88C941927060E5100E1DD62 /* MachineTestAjith.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MachineTestAjith.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F88C941C27060E5100E1DD62 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F88C942027060E5100E1DD62 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -109,6 +115,7 @@
 				F88C942527060E5400E1DD62 /* Assets.xcassets */,
 				F88C942727060E5400E1DD62 /* LaunchScreen.storyboard */,
 				F88C942A27060E5400E1DD62 /* Info.plist */,
+				F881F2E3270B4B030096155E /* TestApp.xcdatamodeld */,
 			);
 			path = MachineTestAjith;
 			sourceTree = "<group>";
@@ -135,6 +142,7 @@
 			children = (
 				F88C9436270611BE00E1DD62 /* ShowListViewController.swift */,
 				F88C94452706304B00E1DD62 /* ShowDetailViewController.swift */,
+				F881F2ED270B73190096155E /* RatingViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -152,6 +160,7 @@
 			isa = PBXGroup;
 			children = (
 				F88C94392706164000E1DD62 /* ApiHandler.swift */,
+				F881F2E6270B63C80096155E /* DbOperations.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -297,9 +306,12 @@
 				F88C942127060E5100E1DD62 /* ViewController.swift in Sources */,
 				F88C941D27060E5100E1DD62 /* AppDelegate.swift in Sources */,
 				F88C94462706304B00E1DD62 /* ShowDetailViewController.swift in Sources */,
+				F881F2E7270B63C80096155E /* DbOperations.swift in Sources */,
 				F88C943A2706164000E1DD62 /* ApiHandler.swift in Sources */,
 				F88C943C270619CA00E1DD62 /* ShowModel.swift in Sources */,
+				F881F2E5270B4B030096155E /* TestApp.xcdatamodeld in Sources */,
 				F88C943E27061E9600E1DD62 /* SceneDelegate.swift in Sources */,
+				F881F2EF270B73F60096155E /* RatingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -449,6 +461,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = MachineTestAjith/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -468,6 +481,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = MachineTestAjith/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -501,6 +515,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		F881F2E3270B4B030096155E /* TestApp.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				F881F2E4270B4B030096155E /* TestApp.xcdatamodel */,
+			);
+			currentVersion = F881F2E4270B4B030096155E /* TestApp.xcdatamodel */;
+			path = TestApp.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = F88C941127060E5100E1DD62 /* Project object */;
 }
